@@ -31,7 +31,7 @@ function hide_box() {
 
 function get_focus_area(msg_type, opts) {
     // Set focus to "Topic" when narrowed to a stream+topic and "New topic" button clicked.
-    if (msg_type === 'stream' && opts.stream && ! opts.subject) {
+    if (msg_type === 'stream' && opts.stream && ! opts.topic) {
         return 'topic';
     } else if ((msg_type === 'stream' && opts.stream)
                || (msg_type === 'private' && opts.private_message_recipient)) {
@@ -194,7 +194,7 @@ exports.start = function (msg_type, opts) {
     // If we are invoked by a compose hotkey (c or C), do not assume that we know
     // what the message's topic or PM recipient should be.
     if (opts.trigger === "compose_hotkey") {
-        opts.subject = '';
+        opts.topic = '';
         opts.private_message_recipient = '';
     }
 
@@ -204,7 +204,7 @@ exports.start = function (msg_type, opts) {
     }
 
     compose_state.stream_name(opts.stream);
-    compose_state.topic(opts.subject);
+    compose_state.topic(opts.topic);
 
     // Set the recipients with a space after each comma, so it looks nice.
     compose_state.recipient(opts.private_message_recipient.replace(/,\s*/g, ", "));
