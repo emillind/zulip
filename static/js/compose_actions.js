@@ -176,7 +176,7 @@ function same_recipient_as_before(msg_type, opts) {
     return (compose_state.get_message_type() === msg_type) &&
             ((msg_type === "stream" &&
               opts.stream === compose_state.stream_name() &&
-              opts.subject === compose_state.topic()) ||
+              opts.topic === compose_state.topic()) ||
              (msg_type === "private" &&
               opts.private_message_recipient === compose_state.recipient()));
 }
