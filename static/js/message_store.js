@@ -132,12 +132,12 @@ exports.add_message_metadata = function (message) {
     case 'stream':
         message.is_stream = true;
         message.stream = message.display_recipient;
-        composebox_typeahead.add_topic(message.stream, message.subject);
+        composebox_typeahead.add_topic(message.stream, message.topic);
         message.reply_to = message.sender_email;
 
         topic_data.add_message({
             stream_id: message.stream_id,
-            topic_name: message.subject,
+            topic_name: message.topic,
             message_id: message.id,
         });
 

@@ -950,7 +950,7 @@ def send_message_backend(request: HttpRequest, user_profile: UserProfile,
                          message_type_name: Text=REQ('type'),
                          message_to: List[Text]=REQ('to', converter=extract_recipients, default=[]),
                          forged: bool=REQ(default=False),
-                         topic_name: Optional[Text]= REQ('subject',
+                         topic_name: Optional[Text]= REQ('topic',
                                                          converter=lambda x: x.strip(), default=None),
                          message_content: Text=REQ('content'),
                          realm_str: Optional[Text]=REQ('realm_str', default=None),
@@ -959,6 +959,7 @@ def send_message_backend(request: HttpRequest, user_profile: UserProfile,
                          delivery_type: Optional[Text]=REQ('delivery_type', default='send_now'),
                          defer_until: Optional[Text]=REQ('deliver_at', default=None),
                          tz_guess: Optional[Text]=REQ('tz_guess', default=None)) -> HttpResponse:
+    print(topic_name)
     client = request.client
     is_super_user = request.user.is_api_super_user
     if forged and not is_super_user:
