@@ -959,7 +959,6 @@ def send_message_backend(request: HttpRequest, user_profile: UserProfile,
                          delivery_type: Optional[Text]=REQ('delivery_type', default='send_now'),
                          defer_until: Optional[Text]=REQ('deliver_at', default=None),
                          tz_guess: Optional[Text]=REQ('tz_guess', default=None)) -> HttpResponse:
-    print(topic_name)
     client = request.client
     is_super_user = request.user.is_api_super_user
     if forged and not is_super_user:
