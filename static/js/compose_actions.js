@@ -160,7 +160,7 @@ function fill_in_opts_from_current_narrowed_view(msg_type, opts) {
     var default_opts = {
         message_type:     msg_type,
         stream:           '',
-        subject:          '',
+        topic:          '',
         private_message_recipient: '',
         trigger:          'unknown',
     };
@@ -308,7 +308,7 @@ exports.respond_to_message = function (opts) {
     } else {
         msg_type = message.type;
     }
-    exports.start(msg_type, {stream: stream, subject: topic,
+    exports.start(msg_type, {stream: stream, topic: topic,
                              private_message_recipient: pm_recipient,
                              replying_to_message: message,
                              trigger: opts.trigger});
