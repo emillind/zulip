@@ -130,6 +130,7 @@ exports.add_message_metadata = function (message) {
 
     switch (message.type) {
     case 'stream':
+        message.topic = message.topic ? message.topic : message.subject;
         message.is_stream = true;
         message.stream = message.display_recipient;
         composebox_typeahead.add_topic(message.stream, message.topic);
